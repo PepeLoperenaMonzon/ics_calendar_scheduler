@@ -1,0 +1,12 @@
+[Calendar]
+# The URL of your ICS calendar file
+# Replace this with your actual calendar URL
+ics_url = https://example.com/calendar.ics
+
+# Where to save the calendar file locally
+# This is where the downloaded calendar will be saved
+local_file = calendar.ics
+
+# Where to save the hash file (used to check for updates)
+# This file helps track if the calendar has been updated
+hash_file = calendar_hash.txt 
