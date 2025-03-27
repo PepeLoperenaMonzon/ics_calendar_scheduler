@@ -32,7 +32,12 @@ def download_calendar():
         new_content = response.content
 
         new_hash = get_file_hash(new_content)
-        old_hash = None
+
+        try:
+            with open(hash_file, "r") as f:
+                old_hash = f.read().strip()
+        except FileNotFoundError:
+            old_hash = None
 
         if os.path.exists(hash_file):
             with open(hash_file, "r") as file:
