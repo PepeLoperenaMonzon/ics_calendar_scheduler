@@ -3,6 +3,7 @@ import hashlib
 import os
 import configparser
 from pathlib import Path
+from plyer import notification
 
 def load_config():
     config = configparser.ConfigParser()
@@ -48,11 +49,20 @@ def download_calendar():
                 file.write(new_content)
             with open(hash_file, "w") as file:
                 file.write(new_hash)
-            print("Calendar updated successfully.")
+            self.send_notification()
         else:
             print("No updates to the calendar.")
     except Exception as e:
         print(f"An error occurred: {e}")
+
+
+def send_notification():
+    notification.notify(
+        title="Calendar Updated",
+        message="The calendar has been updated.",
+        app_name="Calendar Retriever",
+        timeout=10
+    )
 
 
 if __name__ == "__main__":
